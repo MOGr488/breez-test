@@ -11,7 +11,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     Here you can see all the avaliable departments:
-                    <a href="/breez-test/public/departmentslist" class="btn btn-info" role="button">Deprtments List</a>
+                    {{-- <a href="/breez-test/public/departmentslist" class="btn btn-info" role="button">Deprtments List</a> --}}
                      <hr>
                      <br>
                      @php($count=1)
@@ -24,6 +24,7 @@
                           </tr>
                         </thead>
                         <tbody>
+                      @if (isset($department)) 
                         @foreach ($department as $dpt)
                           <tr>
                             <th scope="row">{{ $count }}</th>
@@ -31,7 +32,9 @@
                             <td>{{ $dpt['dptid'] }}</td>                       
                           </tr>
                           @php($count++)
-                          @endforeach 
+                          @endforeach
+                      @endif
+                       
                         </tbody>
                       </table>
                       <br><hr><br>
