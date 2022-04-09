@@ -17,7 +17,7 @@ use App\Http\Controllers\DepartmentsController;
 */
 
 Route::get('list',[DepartmentsController::class,'show']);
-Route::get('departmentslist',[DepartmentsController::class,'show']);
+Route::get('departmentslist',[DepartmentsController::class,'show'])->middleware(['auth'])->name('departmentslist');
 
 
 // Route::get('/blog',[PostsController::class, 'index']);
@@ -53,8 +53,5 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::get('/departmentslist', function () {
-    return view('departmentslist');
-})->middleware(['auth'])->name('departmentslist');
 
 require __DIR__.'/auth.php';
