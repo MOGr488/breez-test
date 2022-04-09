@@ -19,6 +19,8 @@ use App\Http\Controllers\DepartmentsController;
 Route::get('list',[DepartmentsController::class,'show']);
 Route::get('departmentslist',[DepartmentsController::class,'show'])->middleware(['auth'])->name('departmentslist');
 
+Route::post('employeesbydepartment', [DepartmentsController::class,'create'])->middleware(['auth'])->name('employeesbydepartment');
+
 
 // Route::get('/blog',[PostsController::class, 'index']);
 Route::get('/blog', [PostsController::class, 'index']);

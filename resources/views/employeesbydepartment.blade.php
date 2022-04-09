@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
+            {{ __('Employees by Department') }}
         </h2>
         
     </x-slot>
@@ -12,6 +12,16 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     You're logged in! <hr><br>
                     <a href="departmentslist" class="btn btn-info" role="button">Deprtments List</a>
+                    <br>
+                    <hr>
+                    <br>
+                    
+                    @foreach ($department as $dpt)
+                    <h4>{{ $dpt['dptname'] }}</h4>
+                    @endforeach
+                    <hr>
+                    <h2>Department ID: {{ $_POST['dptID'] }}</h2>
+                    
 
                 </div>
             </div>

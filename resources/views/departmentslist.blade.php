@@ -10,10 +10,13 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    Here you can see all the avaliable departments:
+                    Here you can see all the avaliable departments
                     {{-- <a href="/breez-test/public/departmentslist" class="btn btn-info" role="button">Deprtments List</a> --}}
                      <hr>
+                     <h2>Total departments: {{ $department->count() }}</h2>
                      <br>
+                     <form action="employeesbydepartment" method="post">
+                      @csrf
                      @php($count=1)
                      <table class="table table-hover table-primary ">
                         <thead>
@@ -21,22 +24,25 @@
                             <th scope="col">#</th>
                             <th scope="col">Department Name</th>
                             <th scope="col">Department ID</th>
+                            <th scope="col">Select</th>
                           </tr>
                         </thead>
-                        <tbody>
-                      @if (isset($department)) 
+                        <tbody>                  
                         @foreach ($department as $dpt)
                           <tr>
                             <th scope="row">{{ $count }}</th>
                             <td>{{ $dpt['dptname'] }}</td>
-                            <td>{{ $dpt['dptid'] }}</td>                       
+                            <td>{{ $dpt['dptid'] }}</td>
+                            <td>{!! Form::radio('dptID', $dpt['dptid']) !!}</td>                       
                           </tr>
                           @php($count++)
                           @endforeach
-                      @endif
+                      
                        
                         </tbody>
                       </table>
+                      <button type="submit" class="btn btn-info">Submit</button>
+                    </form>
                       <br><hr><br>
                       
 
